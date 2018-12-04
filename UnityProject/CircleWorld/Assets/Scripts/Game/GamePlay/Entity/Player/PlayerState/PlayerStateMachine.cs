@@ -44,15 +44,5 @@ namespace GameWish.Game
         {
             return currentGameplayState.stateID == PlayerStateID.Jump;
         }
-
-        public bool IsFalling()
-        {
-            return currentGameplayState.stateID == PlayerStateID.Fall;
-        }
-
-        public bool IsMoving()
-        {
-            return currentGameplayState.stateID == PlayerStateID.Move;
-        }
     }
 }

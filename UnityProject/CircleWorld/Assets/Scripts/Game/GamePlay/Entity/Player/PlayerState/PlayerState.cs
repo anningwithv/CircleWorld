@@ -11,9 +11,9 @@ namespace GameWish.Game
     {
         None,
         Idle,
-        Move,
+        //Move,
         Jump,
-        Fall,
+        //Fall,
         Dead
     }
 

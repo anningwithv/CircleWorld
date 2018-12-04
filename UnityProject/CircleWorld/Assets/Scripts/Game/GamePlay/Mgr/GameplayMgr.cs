@@ -11,6 +11,8 @@ namespace GameWish.Game
     {
         [SerializeField]
         private Transform m_EntityRoot = null;
+        [SerializeField]
+        private WorldController m_FirstWorld = null;
 
         public void InitGameplay()
         {
@@ -26,6 +28,7 @@ namespace GameWish.Game
             //EffectMgr.S.Init();
 
             UILoader.S.Init();
+            WorldsMgr.S.Init(m_FirstWorld);
             WorldLoader.S.Init(m_EntityRoot);
             MainCamera.S.Init();
 

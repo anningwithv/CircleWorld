@@ -56,6 +56,11 @@ namespace GameWish.Game
 
         private void Update()
         {
+            if (m_Target == null && WorldsMgr.S.CurWorld != null)
+            {
+                m_Target = WorldsMgr.S.CurWorld.transform;
+            }
+
             SmoothFollow();
         }
 
@@ -85,14 +90,15 @@ namespace GameWish.Game
 
         protected override void SetInterestEvent()
         {
-            m_InteresetEvents = new int[] { (int)EventID.OnPlayerSpawned};
+            m_InteresetEvents = new int[] { (int)EventID.OnCurWorldChanged };
         }
 
         public override void HandleEvent(int eventId, params object[] param)
         {
-            if (eventId == (int)EventID.OnPlayerSpawned)
+            if (eventId == (int)EventID.OnCurWorldChanged)
             {
-                m_Target = (Transform)param[0];
+                //m_Target = (Transform)param[0];
+                m_Target = WorldsMgr.S.CurWorld.transform;
             }
         }
 

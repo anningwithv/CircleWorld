@@ -35,6 +35,7 @@ namespace GameWish.Game
 
         public void On_TouchStart(Gesture gesture)
         {
+            m_PlayerController.OnPressedDown();
         }
 
         public void On_TouchDown(Gesture gesture)
@@ -44,6 +45,7 @@ namespace GameWish.Game
 
         public void On_TouchUp(Gesture gesture)
         {
+            m_PlayerController.OnPressedUp();
         }
 
         public void On_Drag(Gesture gesture, bool isTouchStartFromUI)

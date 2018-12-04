@@ -9,8 +9,6 @@ namespace GameWish.Game
 {
     public class PlayerStateJump : PlayerState
     {
-        private Vector3 m_MoveDir;
-
         public PlayerStateJump(PlayerStateID stateEnum) : base(stateEnum)
         {
         }
@@ -26,21 +24,15 @@ namespace GameWish.Game
 
         public override void Execute(PlayerController mgr, float dt)
         {
-            //if(mgr.MoveDir == PlayerController.PlayerMoveDir.Left)
-            //{
-            //    if(mgr.CanMoveLeft)
-            //        mgr.transform.position -= new Vector3(dt * mgr.PlayerData.PlayerJumpHorizontalSpeed,0,0);
-            //}
-            //else if (mgr.MoveDir == PlayerController.PlayerMoveDir.Right)
-            //{
-            //    if (mgr.CanMoveRight)
-            //        mgr.transform.position += new Vector3(dt * mgr.PlayerData.PlayerJumpHorizontalSpeed, 0, 0);
-            //}
-            //else if (mgr.MoveDir == PlayerController.PlayerMoveDir.Vertical)
-            //{
-            //    if (mgr.CanMoveUp)
-            //        mgr.transform.position += new Vector3(0, dt * mgr.PlayerData.PlayerJumpVerticalSpeed, 0);
-            //}
+            Vector3 speedYDir = (mgr.transform.position - WorldsMgr.S.CurWorld.transform.position).normalized;
+            Vector3 speedXDir = Vector3.Cross(Vector3.forward, speedYDir).normalized;
+
+            mgr.PlayerData.PlayerSpeedY -= mgr.PlayerData.PlayerSpeedYDecreaseSpeed * dt;
+
+            Vector3 moveSpeed = speedYDir * mgr.PlayerData.PlayerSpeedY + speedXDir * mgr.PlayerData.PlayerSpeedX;
+            mgr.PlayerData.MoveDir = moveSpeed.normalized;
+
+            mgr.transform.position += moveSpeed * Time.deltaTime;
         }
 
         //private void HandlePlayerOutOfRange(PlayerController mgr)

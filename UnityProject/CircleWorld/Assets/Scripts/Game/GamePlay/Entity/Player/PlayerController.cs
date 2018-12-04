@@ -40,7 +40,7 @@ namespace GameWish.Game
             m_PlayerData = new PlayerData(this);
 
             m_PlayerView =  gameObject.AddComponent<PlayerView>();
-            m_PlayerView.Init();
+            m_PlayerView.Init(this);
 
             m_PlayerInputMgr = gameObject.AddComponent<PlayerInputMgr>();
 
@@ -49,9 +49,19 @@ namespace GameWish.Game
             //m_PlayerTrailSpawner = new PlayerTrailSpawner(this);
 
             m_PlayerStateMachine = new PlayerStateMachine(this);
-            m_PlayerStateMachine.SetCurrentStateByID(PlayerStateID.Idle);
+            m_PlayerStateMachine.SetCurrentStateByID(PlayerStateID.Jump);
 
             SendEvent(EventID.OnPlayerSpawned, transform);
+        }
+
+        public void OnPressedDown()
+        {
+            m_PlayerData.PlayerSpeedYDecreaseSpeed = m_PlayerData.PlayerSpeedYDecreaseMaxSpeed;
+        }
+
+        public void OnPressedUp()
+        {
+            m_PlayerData.PlayerSpeedYDecreaseSpeed = m_PlayerData.PlayerSpeedYDecreaseNormalSpeed;
         }
 
         protected override void SetInterestEvent()
@@ -76,25 +86,10 @@ namespace GameWish.Game
             {
                 m_PlayerStateMachine.UpdateState(Time.deltaTime);
 
-                if (m_PlayerRaycast.HasBoardDown)
-                {
-                    SetState(PlayerStateID.Idle);
-                }
-            }
-
-            if (m_PlayerStateMachine.IsFalling())
-            {
-                m_PlayerStateMachine.UpdateState(Time.deltaTime);
-
-                if (m_PlayerRaycast.HasBoardDown)
-                {
-                    SetState(PlayerStateID.Idle);
-                }
-            }
-
-            if (m_PlayerStateMachine.IsMoving())
-            {
-                m_PlayerStateMachine.UpdateState(Time.deltaTime);
+                //if (m_PlayerRaycast.HasBoardDown)
+                //{
+                //    SetState(PlayerStateID.Idle);
+                //}
             }
         }
 
@@ -131,6 +126,16 @@ namespace GameWish.Game
             SetState(PlayerStateID.Idle);
         }
 
+        private void OnTriggerEnter2D(Collider2D collision)
+        {
+            if (collision.tag == Define.WORLD_TAG)
+            {
+                float speedY = Mathf.Min(Mathf.Abs(m_PlayerData.PlayerSpeedY * 0.7f), m_PlayerData.PlayerMaxSpeedY);
+                //float speedY = Mathf.Abs(m_PlayerData.PlayerSpeedY);
+                m_PlayerData.PlayerSpeedY = speedY;
+                m_PlayerData.PlayerSpeedYDecreaseSpeed = m_PlayerData.PlayerSpeedYDecreaseNormalSpeed;
+            }
+        }
         //private void OnDrawGizmos()
         //{
         //    Gizmos.color = Color.red;

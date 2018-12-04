@@ -8,8 +8,11 @@ namespace GameWish.Game
 {
     public class WorldData : EntityData
     {
+        //private float m_GravityRange = 5;
+
         public WorldData(EntityController controller) : base(controller)
         {
+
         }
     }
 }

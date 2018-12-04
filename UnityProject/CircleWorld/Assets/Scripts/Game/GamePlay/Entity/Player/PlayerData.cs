@@ -10,29 +10,61 @@ namespace GameWish.Game
     {
         private PlayerController m_PlayerController = null;
 
-        private float m_PlayerJumpHorizontalSpeed = 5f;
-        private float m_PlayerJumpVerticalSpeed = 5f;
-        private float m_PlayerFallSpeed = 4f;
+        private float m_PlayerSpeedX = -4f;
+        private float m_PlayerSpeedY;
+        private float m_PlayerSpeedYDecreaseSpeed;
+        private float m_PlayerSpeedYDecreaseNormalSpeed = 3f;
+        private float m_PlayerSpeedYDecreaseMaxSpeed = 12f;
+        private float m_PlayerMaxSpeedY = 5f;
+        private float m_PlayerNormalSpeedY = 3f;
+       
+        private Vector3? m_MoveDir = null;
 
-        public float PlayerJumpHorizontalSpeed
+        public float PlayerSpeedX
         {
-            get { return m_PlayerJumpHorizontalSpeed; }
+            set { m_PlayerSpeedX = value; }
+            get { return m_PlayerSpeedX; }
         }
 
-        public float PlayerJumpVerticalSpeed
+        public float PlayerSpeedY
         {
-            get { return m_PlayerJumpVerticalSpeed; }
+            set { m_PlayerSpeedY = value; }
+            get { return m_PlayerSpeedY; }
         }
 
-        public float PlayerFallSpeed
+        public float PlayerMaxSpeedY
         {
-            get { return m_PlayerFallSpeed; }
+            get { return m_PlayerMaxSpeedY; }
+        }
+
+        public float PlayerSpeedYDecreaseSpeed
+        {
+            set { m_PlayerSpeedYDecreaseSpeed = value; }
+            get { return m_PlayerSpeedYDecreaseSpeed; }
+        }
+
+        public float PlayerSpeedYDecreaseMaxSpeed
+        {
+            get { return m_PlayerSpeedYDecreaseMaxSpeed; }
+        }
+
+        public float PlayerSpeedYDecreaseNormalSpeed
+        {
+            get { return m_PlayerSpeedYDecreaseNormalSpeed; }
+        }
+
+        public Vector3 MoveDir
+        {
+            set { m_MoveDir = value; }
+            get { return m_MoveDir.Value; }
         }
 
         public PlayerData(PlayerController controller) : base(controller)
         {
             m_PlayerController = controller;
 
+            m_PlayerSpeedYDecreaseSpeed = m_PlayerSpeedYDecreaseNormalSpeed;
+            m_PlayerSpeedY = m_PlayerNormalSpeedY;
         }
     }
 }

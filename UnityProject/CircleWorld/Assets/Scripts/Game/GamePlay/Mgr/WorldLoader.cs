@@ -20,11 +20,8 @@ namespace GameWish.Game
             //UnityExtensions.CallWithDelay(GameplayMgr.S.GetComponent<MonoBehaviour>(), () => { LoadWorld(); }, -1);
             m_WorldResLoader = ResLoader.Allocate("WorldResLoader");
 
-            InitPatternPool();
-            //InitPlayerPool();
-            InitPlayerTrailPool();
-
-            LoadWorld();
+            SpawnPlayer();
+            //LoadWorld();
         }
 
         private void LoadWorld()
@@ -33,17 +30,28 @@ namespace GameWish.Game
             var worldObj = GameObject.Instantiate(worldPrefab, m_EntityRoot) as GameObject;
 
             m_WorldController = worldObj.GetComponent<WorldController>();
+
+            WorldsMgr.S.CurWorld = m_WorldController;
         }
 
-        private void InitPatternPool()
+        private void SpawnPlayer()
         {
-            for (int i = 0; i < Define.BLOCK_GROUP_COUNT; ++i)
-            {
-                string poolName = string.Format("Pattern_{0}", i + 1);
-                GameObject prefab = m_WorldResLoader.LoadSync(poolName) as GameObject;
-                GameObjectPoolMgr.S.AddPool(poolName, prefab, 4, 1);
-            }
+            GameObject playerPrefab = m_WorldResLoader.LoadSync(Define.PLAYER_PREFAB) as GameObject;
+            var playerObj = GameObject.Instantiate(playerPrefab) as GameObject;
+
+            //playerObj.transform.position = m_PlayerSpawnPoition;
+
+            //m_PlayerController = playerObj.GetComponent<PlayerController>();
         }
+        //private void InitPatternPool()
+        //{
+        //    for (int i = 0; i < Define.BLOCK_GROUP_COUNT; ++i)
+        //    {
+        //        string poolName = string.Format("Pattern_{0}", i + 1);
+        //        GameObject prefab = m_WorldResLoader.LoadSync(poolName) as GameObject;
+        //        GameObjectPoolMgr.S.AddPool(poolName, prefab, 4, 1);
+        //    }
+        //}
 
         //private void InitPlayerPool()
         //{
@@ -51,10 +59,10 @@ namespace GameWish.Game
         //    GameObjectPoolMgr.S.AddPool(Define.PLAYER_TAG, playerPrefab, 2, 1);
         //}
 
-        private void InitPlayerTrailPool()
-        {
-            GameObject playerTrialPrefab = m_WorldResLoader.LoadSync(Define.PLAYER_TRAIL_PREFAB) as GameObject;
-            GameObjectPoolMgr.S.AddPool(Define.PLAYER_TRAIL_PREFAB, playerTrialPrefab, 10, 5);
-        }
+        //private void InitPlayerTrailPool()
+        //{
+        //    GameObject playerTrialPrefab = m_WorldResLoader.LoadSync(Define.PLAYER_TRAIL_PREFAB) as GameObject;
+        //    GameObjectPoolMgr.S.AddPool(Define.PLAYER_TRAIL_PREFAB, playerTrialPrefab, 10, 5);
+        //}
     }
 }

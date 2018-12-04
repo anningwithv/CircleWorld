@@ -1,14 +1,12 @@
 ManifestFileVersion: 0
-CRC: 3272454760
+CRC: 498810171
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: res/filemode/scenes/game.bundle
       Dependencies:
-        Dependency_0: res/foldermode/sprites.bundle
-        Dependency_1: res/foldermode/prefabs/leveltileprefabs.bundle
-        Dependency_2: res/foldermode/prefabs/patterns.bundle
-        Dependency_3: res/foldermode/prefabs/entity/player.bundle
+        Dependency_0: res/foldermode/prefabs/entity.bundle
+        Dependency_1: res/foldermode/prefabs/entity/player.bundle
     Info_1:
       Name: res/foldermode/material/default.bundle
       Dependencies:
@@ -45,21 +43,14 @@ AssetBundleManifest:
       Name: res/foldermode/sprites.bundle
       Dependencies: {}
     Info_12:
-      Name: res/foldermode/prefabs/leveltileprefabs.bundle
+      Name: res/foldermode/prefabs/entity.bundle
       Dependencies:
         Dependency_0: res/foldermode/sprites.bundle
     Info_13:
-      Name: res/foldermode/prefabs/leveltiles.bundle
-      Dependencies:
-        Dependency_0: res/foldermode/prefabs/leveltileprefabs.bundle
-    Info_14:
-      Name: res/foldermode/prefabs/patterns.bundle
-      Dependencies:
-        Dependency_0: res/foldermode/prefabs/leveltileprefabs.bundle
-    Info_15:
-      Name: res/foldermode/prefabs/entity.bundle
-      Dependencies: {}
-    Info_16:
       Name: res/foldermode/prefabs/entity/player.bundle
+      Dependencies:
+        Dependency_0: res/foldermode/sprites.bundle
+    Info_14:
+      Name: res/foldermode/prefabs/entity/items.bundle
       Dependencies:
         Dependency_0: res/foldermode/sprites.bundle

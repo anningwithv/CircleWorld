@@ -873,6 +873,7 @@
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Player\PlayerTrail\PlayerTrail.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Player\PlayerTrail\PlayerTrailSpawner.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Player\PlayerView.cs" />
+    <Compile Include="Assets\Scripts\Game\GamePlay\Entity\World\GravityRange.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\World\WorldController.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\World\WorldData.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\World\WorldView.cs" />
@@ -890,6 +891,7 @@
     <Compile Include="Assets\Scripts\Game\GamePlay\Mgr\MusicMgr.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Mgr\OfflineRewardMgr.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Mgr\WorldLoader.cs" />
+    <Compile Include="Assets\Scripts\Game\GamePlay\Mgr\WorldsMgr.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\State\GameplayState.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\State\GameplayStateFactory.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\State\GameplayStateMachine.cs" />

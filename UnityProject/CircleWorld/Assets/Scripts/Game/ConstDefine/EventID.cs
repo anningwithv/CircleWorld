@@ -9,7 +9,7 @@ namespace GameWish.Game
         OnLanguageTableSwitchFinish,
 
         OnPlayerSpawned, //当玩家出生时发送
-
+        OnCurWorldChanged,
         //OnPlayerEnergyChanged,
         //OnGetEnergy,
         //// Data related msg

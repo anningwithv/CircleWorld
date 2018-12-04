@@ -10,38 +10,14 @@ namespace GameWish.Game
     {
         private PlayerController m_PlayerController = null;
 
-        private float m_BodyHeight = 0.7f;
-        private float m_BodyWidth = 0.7f;
+        private float m_BodyHeight = 0.6f;
+        private float m_BodyWidth = 0.4f;
         private int m_IgnoreLayerMask = ~(1<<LayerMask.NameToLayer(Define.PLAYER_LAYER));
-
-        private bool m_HasBoardLeft = false;
-        private RaycastHit2D m_RaycastHitLeft;
-
-        private bool m_HasBoardRight = false;
-        private RaycastHit2D m_RaycastHitRight;
-
-        private bool m_HasBoardUp = false;
-        private RaycastHit2D m_RaycastHitUp;
 
         private bool m_HasBoardBottom = false;
         private RaycastHit2D m_RaycastHitBottom;
 
         private Vector2 m_RaycastOriginPos;
-
-        public bool HasBoardLeft
-        {
-            get { return m_HasBoardLeft; }
-        }
-
-        public bool HasBoardRight
-        {
-            get { return m_HasBoardRight; }
-        }
-
-        public bool HasBoardUp
-        {
-            get { return m_HasBoardUp; }
-        }
 
         public bool HasBoardDown
         {
@@ -57,31 +33,12 @@ namespace GameWish.Game
         {
             m_RaycastOriginPos = new Vector2(m_PlayerController.transform.position.x, m_PlayerController.transform.position.y);
 
-            RaycastToLeft();
-            RaycastToRight();
-            RaycastToUp();
             RaycastToBottom();
-        }
-
-        private void RaycastToLeft()
-        {
-            m_HasBoardLeft = Raycast(Vector2.left, m_BodyWidth / 2f, out m_RaycastHitLeft);
-        }
-
-        private void RaycastToRight()
-        {
-            m_HasBoardRight = Raycast(Vector2.right, m_BodyWidth / 2f, out m_RaycastHitRight);
-        }
-
-        private void RaycastToUp()
-        {
-            m_HasBoardUp = Raycast(Vector2.up, m_BodyHeight / 2f, out m_RaycastHitUp);
         }
 
         private void RaycastToBottom()
         {
             m_HasBoardBottom = Raycast(Vector2.down, m_BodyHeight / 2f, out m_RaycastHitBottom);
-            //Log.i("Has board bottom : " + m_HasBoardBottom);
         }
 
         private bool Raycast(Vector2 dir, float distance, out RaycastHit2D raycastHit2D)

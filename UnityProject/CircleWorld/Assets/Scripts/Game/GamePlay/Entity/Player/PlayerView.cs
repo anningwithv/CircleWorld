@@ -8,10 +8,10 @@ namespace GameWish.Game
 {
     public class PlayerView : EntityView
     {
-
-        public void Init()
+        private PlayerController m_PlayerController = null;
+        public void Init(PlayerController playerController)
         {
-
+            m_PlayerController = playerController;
         }
 
         private void RotateToDir(Vector3 dir, Transform body)
@@ -20,6 +20,12 @@ namespace GameWish.Game
             Vector3 toTargetDir = dir;
             Quaternion toTargetDirQuaternion = Quaternion.FromToRotation(forward, toTargetDir);
             body.rotation *= toTargetDirQuaternion;
+        }
+
+        private void Update()
+        {
+            Vector3 dir = m_PlayerController.transform.position - WorldsMgr.S.CurWorld.transform.position;
+            RotateToDir(dir, m_PlayerController.transform);
         }
     }
 }

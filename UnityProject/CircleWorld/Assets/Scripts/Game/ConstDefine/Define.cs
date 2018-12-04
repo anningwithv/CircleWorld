@@ -14,6 +14,7 @@ namespace GameWish.Game
         public const string PLAYER_PREFAB = "Player1";
         public const string SAWTOOTH_PREFAB = "Sawtooth";
         public const string WORLD_BG_PREFAB = "WorldBg";
+        public const string WORLD_TAG = "World";
         public const string WORLD_PREFAB = "World";
         public const string PLAYER_TAG = "Player";
         public const string PLAYER_LAYER = "Player";

@@ -1,22 +1,35 @@
 ManifestFileVersion: 0
-CRC: 1170708433
+CRC: 2436976023
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: 84da939a6f63b78064cc20b90d2f74e9
+    Hash: 16e1b3ef3450e5ffe6bb07fdf6c4c46e
   TypeTreeHash:
     serializedVersion: 2
-    Hash: b8d874a51b49e96de263dba908eacb8c
+    Hash: 474fe12ee7a21bd158bc182b79158e2d
 HashAppended: 0
 ClassTypes:
 - Class: 1
   Script: {instanceID: 0}
 - Class: 4
   Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
 - Class: 114
   Script: {fileID: 11500000, guid: 2ba50ba02f71993439d3a6e816da83e7, type: 3}
 - Class: 115
   Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
 Assets:
 - Assets/Res/FolderMode/Prefabs/Entity/World.prefab
-Dependencies: []
+Dependencies:
+- D:/UnityProjects/CircleWorld/UnityProject/CircleWorld/Assets/StreamingAssets/game/res/foldermode/sprites.bundle
