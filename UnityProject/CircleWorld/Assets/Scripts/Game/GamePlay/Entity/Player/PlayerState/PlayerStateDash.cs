@@ -7,9 +7,9 @@ using Qarth;
 
 namespace GameWish.Game
 {
-    public class PlayerStateJump : PlayerState
+    public class PlayerStateDash : PlayerState
     {
-        public PlayerStateJump(PlayerStateID stateEnum) : base(stateEnum)
+        public PlayerStateDash(PlayerStateID stateEnum) : base(stateEnum)
         {
         }
 
@@ -27,7 +27,7 @@ namespace GameWish.Game
             Vector3 speedYDir = mgr.PlayerData.GravityDir * (mgr.transform.position - WorldsMgr.S.CurWorld.transform.position).normalized;
             Vector3 speedXDir = Vector3.Cross(Vector3.forward, speedYDir).normalized;
 
-            mgr.PlayerData.PlayerSpeedY -= mgr.PlayerData.PlayerSpeedYDecreaseSpeed * dt;
+            mgr.PlayerData.PlayerSpeedY = 0;
 
             Vector3 moveSpeed = speedYDir * mgr.PlayerData.PlayerSpeedY + speedXDir * mgr.PlayerData.PlayerSpeedX;
             mgr.PlayerData.MoveDir = moveSpeed.normalized;

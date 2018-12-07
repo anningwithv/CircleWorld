@@ -2,7 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IBoard
+namespace GameWish.Game
 {
+    public class ObstacleStab : ObstacleBase
+    {
 
+    }
 }

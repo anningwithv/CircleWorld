@@ -13,6 +13,7 @@ namespace GameWish.Game
         Idle,
         //Move,
         Jump,
+        Dash,
         //Fall,
         Dead
     }

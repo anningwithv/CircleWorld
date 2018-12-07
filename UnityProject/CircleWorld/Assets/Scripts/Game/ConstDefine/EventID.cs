@@ -9,6 +9,8 @@ namespace GameWish.Game
         OnLanguageTableSwitchFinish,
 
         OnPlayerSpawned, //当玩家出生时发送
+        OnPlayerHurt,
+        OnSetGravityInversed,
         OnCurWorldChanged,
         //OnPlayerEnergyChanged,
         //OnGetEnergy,

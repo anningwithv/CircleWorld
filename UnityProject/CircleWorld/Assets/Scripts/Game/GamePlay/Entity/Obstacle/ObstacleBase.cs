@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GameWish.Game
 {
-    public class ItemBase : EntityController, IItem
+    public class ObstacleBase : EntityController, IObstacle
     {
         protected override void Init()
         {
@@ -24,7 +24,7 @@ namespace GameWish.Game
 
         public virtual void OnColliderPlayer()
         {
-            Destroy(gameObject);
+            SendEvent(EventID.OnPlayerHurt);
         }
     }
 }

@@ -4,7 +4,9 @@ using UnityEngine;
 
 namespace GameWish.Game
 {
-    public class BoardNormal : BoardBaseController
+    public interface IObstacle
     {
+        void OnColliderPlayer();
     }
+
 }

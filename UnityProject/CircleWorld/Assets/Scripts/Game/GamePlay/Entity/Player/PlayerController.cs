@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using Qarth;
 using System;
+using DG.Tweening;
 
 namespace GameWish.Game
 {
     public class PlayerController : EntityController
-    {
-    
+    { 
         public static PlayerController Instance = null;
 
         private PlayerData m_PlayerData = null;
@@ -54,19 +54,36 @@ namespace GameWish.Game
             SendEvent(EventID.OnPlayerSpawned, transform);
         }
 
-        public void OnPressedDown()
+        public void OnPressYDown()
         {
+            transform.DOScale(new Vector3(0.8f, 0.8f, 1f), 0.2f);
             m_PlayerData.PlayerSpeedYDecreaseSpeed = m_PlayerData.PlayerSpeedYDecreaseMaxSpeed;
         }
 
-        public void OnPressedUp()
+        public void OnPressedYUp()
         {
+            transform.DOScale(new Vector3(1f, 1f, 1f), 0.2f);
             m_PlayerData.PlayerSpeedYDecreaseSpeed = m_PlayerData.PlayerSpeedYDecreaseNormalSpeed;
+        }
+
+        public void OnPressXDown()
+        {
+            m_PlayerData.PlayerSpeedX = m_PlayerData.PlayerMaxSpeedX;
+
+            m_PlayerStateMachine.SetCurrentStateByID(PlayerStateID.Dash);
+        }
+
+        public void OnPressedXUp()
+        {
+            m_PlayerData.PlayerSpeedX = m_PlayerData.PlayerNormalSpeedX;
+
+            m_PlayerStateMachine.SetCurrentStateByID(PlayerStateID.Jump);
         }
 
         protected override void SetInterestEvent()
         {
-            //m_InteresetEvents = new int[] { (int)EventID.OnGetEnergy };
+            m_InteresetEvents = new int[] { (int)EventID.OnPlayerHurt,
+            (int)EventID.OnSetGravityInversed};
         }
 
         private void Update()
@@ -115,10 +132,14 @@ namespace GameWish.Game
 
         public override void HandleEvent(int eventId, params object[] param)
         {
-            //if (eventId == (int)EventID.OnGetEnergy)
-            //{
-            //    m_PlayerData.ResetEnergy();
-            //}
+            if (eventId == (int)EventID.OnPlayerHurt)
+            {
+                GameStateMgr.S.EndGame();
+            }
+            else if (eventId == (int)EventID.OnSetGravityInversed)
+            {
+                m_PlayerData.GravityDir *= -1;
+            }
         }
 
         public void OnReset(Vector3 pos)
@@ -131,6 +152,7 @@ namespace GameWish.Game
             if (collision.tag == Define.WORLD_TAG)
             {
                 float speedY = Mathf.Min(Mathf.Abs(m_PlayerData.PlayerSpeedY * 0.7f), m_PlayerData.PlayerMaxSpeedY);
+                speedY = Mathf.Max(m_PlayerData.PlayerHitGroundMinSpeedY, speedY);
                 //float speedY = Mathf.Abs(m_PlayerData.PlayerSpeedY);
                 m_PlayerData.PlayerSpeedY = speedY;
                 m_PlayerData.PlayerSpeedYDecreaseSpeed = m_PlayerData.PlayerSpeedYDecreaseNormalSpeed;

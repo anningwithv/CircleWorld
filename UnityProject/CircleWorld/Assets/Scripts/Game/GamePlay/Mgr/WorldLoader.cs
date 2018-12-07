@@ -11,7 +11,7 @@ namespace GameWish.Game
     {
         private ResLoader m_WorldResLoader = null;
         private Transform m_EntityRoot = null;
-        private WorldController m_WorldController = null;
+        private WorldControllerBase m_WorldController = null;
 
         public void Init(Transform entityRoot)
         {
@@ -20,8 +20,6 @@ namespace GameWish.Game
             //UnityExtensions.CallWithDelay(GameplayMgr.S.GetComponent<MonoBehaviour>(), () => { LoadWorld(); }, -1);
             m_WorldResLoader = ResLoader.Allocate("WorldResLoader");
 
-            SpawnPlayer();
-            //LoadWorld();
         }
 
         private void LoadWorld()
@@ -29,20 +27,12 @@ namespace GameWish.Game
             var worldPrefab = m_WorldResLoader.LoadSync(Define.WORLD_PREFAB);
             var worldObj = GameObject.Instantiate(worldPrefab, m_EntityRoot) as GameObject;
 
-            m_WorldController = worldObj.GetComponent<WorldController>();
+            m_WorldController = worldObj.GetComponent<WorldControllerBase>();
 
             WorldsMgr.S.CurWorld = m_WorldController;
         }
 
-        private void SpawnPlayer()
-        {
-            GameObject playerPrefab = m_WorldResLoader.LoadSync(Define.PLAYER_PREFAB) as GameObject;
-            var playerObj = GameObject.Instantiate(playerPrefab) as GameObject;
 
-            //playerObj.transform.position = m_PlayerSpawnPoition;
-
-            //m_PlayerController = playerObj.GetComponent<PlayerController>();
-        }
         //private void InitPatternPool()
         //{
         //    for (int i = 0; i < Define.BLOCK_GROUP_COUNT; ++i)

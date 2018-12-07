@@ -45,13 +45,13 @@ namespace GameWish.Game
         {
             raycastHit2D = Physics2D.Raycast(m_RaycastOriginPos, dir, distance, m_IgnoreLayerMask);
 
-            if (raycastHit2D.transform != null)
-            {
-                if(raycastHit2D.transform.GetComponent<BoardBaseController>()!= null)
-                {
-                    return true;
-                }
-            }
+            //if (raycastHit2D.transform != null)
+            //{
+            //    if(raycastHit2D.transform.GetComponent<BoardBaseController>()!= null)
+            //    {
+            //        return true;
+            //    }
+            //}
 
             return false;
         }

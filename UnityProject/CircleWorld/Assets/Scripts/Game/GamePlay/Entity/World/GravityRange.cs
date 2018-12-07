@@ -8,11 +8,11 @@ namespace GameWish.Game
 {
     public class GravityRange : MonoBehaviour
     {
-        private WorldController m_World = null;
+        private WorldControllerBase m_World = null;
 
         private void Awake()
         {
-            m_World = GetComponentInParent<WorldController>();
+            m_World = GetComponentInParent<WorldControllerBase>();
         }
 
         private void OnTriggerEnter2D(Collider2D collision)

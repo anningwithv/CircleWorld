@@ -18,6 +18,7 @@ namespace GameWish.Game
         {
             RegisterPlayerState(PlayerStateID.Idle, new PlayerStateIdle(PlayerStateID.Idle));
             RegisterPlayerState(PlayerStateID.Jump, new PlayerStateJump(PlayerStateID.Jump));
+            RegisterPlayerState(PlayerStateID.Dash, new PlayerStateDash(PlayerStateID.Dash));
             //RegisterPlayerState(PlayerStateID.Move, new PlayerStateMove(PlayerStateID.Move));
             //RegisterPlayerState(PlayerStateID.Fall, new PlayerStateFall(PlayerStateID.Fall));
             RegisterPlayerState(PlayerStateID.Dead, new PlayerStateDead(PlayerStateID.Dead));

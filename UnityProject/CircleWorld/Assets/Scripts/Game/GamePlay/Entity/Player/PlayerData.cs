@@ -10,14 +10,18 @@ namespace GameWish.Game
     {
         private PlayerController m_PlayerController = null;
 
-        private float m_PlayerSpeedX = -4f;
+        private float m_PlayerNormalSpeedX = -4f;
+        private float m_PlayerMaxSpeedX = -5f;
+        private float m_PlayerSpeedX;
         private float m_PlayerSpeedY;
         private float m_PlayerSpeedYDecreaseSpeed;
         private float m_PlayerSpeedYDecreaseNormalSpeed = 3f;
-        private float m_PlayerSpeedYDecreaseMaxSpeed = 12f;
+        private float m_PlayerSpeedYDecreaseMaxSpeed = 30f;
         private float m_PlayerMaxSpeedY = 5f;
         private float m_PlayerNormalSpeedY = 3f;
-       
+        private float m_PlayerHitGroundMinSpeedY = 1f;
+        private float m_GravityDir = 1f;
+
         private Vector3? m_MoveDir = null;
 
         public float PlayerSpeedX
@@ -53,10 +57,31 @@ namespace GameWish.Game
             get { return m_PlayerSpeedYDecreaseNormalSpeed; }
         }
 
+        public float PlayerHitGroundMinSpeedY
+        {
+            get { return m_PlayerHitGroundMinSpeedY; }
+        }
+
+        public float PlayerNormalSpeedX
+        {
+            get { return m_PlayerNormalSpeedX; }
+        }
+
+        public float PlayerMaxSpeedX
+        {
+            get { return m_PlayerMaxSpeedX; }
+        }
+
         public Vector3 MoveDir
         {
             set { m_MoveDir = value; }
             get { return m_MoveDir.Value; }
+        }
+
+        public float GravityDir
+        {
+            set { m_GravityDir = value; }
+            get { return m_GravityDir; }
         }
 
         public PlayerData(PlayerController controller) : base(controller)
@@ -65,6 +90,7 @@ namespace GameWish.Game
 
             m_PlayerSpeedYDecreaseSpeed = m_PlayerSpeedYDecreaseNormalSpeed;
             m_PlayerSpeedY = m_PlayerNormalSpeedY;
+            m_PlayerSpeedX = m_PlayerNormalSpeedX;
         }
     }
 }

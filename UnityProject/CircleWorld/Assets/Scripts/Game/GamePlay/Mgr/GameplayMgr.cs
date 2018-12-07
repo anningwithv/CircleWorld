@@ -12,7 +12,7 @@ namespace GameWish.Game
         [SerializeField]
         private Transform m_EntityRoot = null;
         [SerializeField]
-        private WorldController m_FirstWorld = null;
+        private WorldControllerBase m_FirstWorld = null;
 
         public void InitGameplay()
         {
