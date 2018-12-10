@@ -44,5 +44,10 @@ namespace GameWish.Game
         {
             return currentGameplayState.stateID == PlayerStateID.Jump;
         }
+
+        public bool IsDashing()
+        {
+            return currentGameplayState.stateID == PlayerStateID.Dash;
+        }
     }
 }

@@ -28,5 +28,16 @@ namespace GameWish.Game
         {
             
         }
+
+        public void HitByPlayer(float damage)
+        {
+            m_WorldData.WorldHP -= damage;
+        }
+
+        public void HideBody()
+        {
+            if(m_WorldBody != null)
+                m_WorldBody.SetActive(false);
+        }
     }
 }

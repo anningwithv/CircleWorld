@@ -56,12 +56,12 @@ namespace GameWish.Game
 
         private void Update()
         {
-            if (m_Target == null && WorldsMgr.S.CurWorld != null)
-            {
-                m_Target = WorldsMgr.S.CurWorld.transform;
-            }
+            //if (m_Target == null && WorldsMgr.S.CurWorld != null)
+            //{
+            //    m_Target = WorldsMgr.S.CurWorld.transform;
+            //}
 
-            SmoothFollow();
+            //SmoothFollow();
         }
 
         private void SmoothFollow()

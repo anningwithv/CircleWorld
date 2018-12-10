@@ -1,12 +1,12 @@
 ManifestFileVersion: 0
-CRC: 2700615530
+CRC: 191881457
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: cb0d8be585c61ddd385c7e3308d4c057
+    Hash: db469719eac084ec3166683652acf3da
   TypeTreeHash:
     serializedVersion: 2
-    Hash: 2bb83466b730f865baf84db660c83fb4
+    Hash: 13c1f3f0469e693011e7769544f16058
 HashAppended: 0
 ClassTypes:
 - Class: 1
@@ -17,10 +17,20 @@ ClassTypes:
   Script: {instanceID: 0}
 - Class: 48
   Script: {instanceID: 0}
+- Class: 50
+  Script: {instanceID: 0}
 - Class: 58
   Script: {instanceID: 0}
 - Class: 114
+  Script: {fileID: 11500000, guid: aa83a330ffc3f7b46a1b49d96814cf52, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 2ba50ba02f71993439d3a6e816da83e7, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 7fb43b1285ba9cf4e89055062d89685b, type: 3}
+- Class: 114
   Script: {fileID: 11500000, guid: 6e8502f5802f0324abd3652346bb1acb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3b9a41da8db274741a6727cec84f3c3a, type: 3}
 - Class: 115
   Script: {instanceID: 0}
 - Class: 212
@@ -28,6 +38,6 @@ ClassTypes:
 - Class: 213
   Script: {instanceID: 0}
 Assets:
-- Assets/Res/FolderMode/Prefabs/Entity/Items/ItemEnergy.prefab
+- Assets/Res/FolderMode/Prefabs/Entity/World/World1.prefab
 Dependencies:
 - D:/UnityProjects/CircleWorld/UnityProject/CircleWorld/Assets/StreamingAssets/game/res/foldermode/sprites.bundle

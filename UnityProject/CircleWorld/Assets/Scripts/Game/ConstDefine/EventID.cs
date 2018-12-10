@@ -12,8 +12,10 @@ namespace GameWish.Game
         OnPlayerHurt,
         OnSetGravityInversed,
         OnCurWorldChanged,
-        //OnPlayerEnergyChanged,
-        //OnGetEnergy,
+        OnWorldHpChanged,
+        OnWorldDestroyed,
+        OnPlayerEnergyChanged,
+        OnPlayerGetEnergy, // float value
         //// Data related msg
         OnAddGoldCount, //当金币数发生改变时发送这个消息, long goldCount
         OnAddDiamondCount, //当钻石数发生改变时发送这个消息, int diamondCount

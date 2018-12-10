@@ -14,12 +14,10 @@ namespace GameWish.Game
         {
         }
 
-        //protected override void OnTriggerEnter2D(Collider2D collision)
-        //{
-        //    if (collision.gameObject.tag == Define.PLAYER_TAG)
-        //    {
-        //        //SendEvent(EventID.OnGetEnergy);
-        //    }
-        //}
+        public override void OnColliderPlayer()
+        {
+            SendEvent(EventID.OnPlayerGetEnergy, 1f);
+            base.OnColliderPlayer();
+        }
     }
 }

@@ -10,17 +10,21 @@ namespace GameWish.Game
     {
         private PlayerController m_PlayerController = null;
 
+        private float m_PlayerDecreaseSpeedX = 6f;
         private float m_PlayerNormalSpeedX = -4f;
-        private float m_PlayerMaxSpeedX = -5f;
+        private float m_PlayerMaxSpeedX = -10f;
         private float m_PlayerSpeedX;
         private float m_PlayerSpeedY;
         private float m_PlayerSpeedYDecreaseSpeed;
         private float m_PlayerSpeedYDecreaseNormalSpeed = 3f;
         private float m_PlayerSpeedYDecreaseMaxSpeed = 30f;
-        private float m_PlayerMaxSpeedY = 5f;
+        private float m_PlayerMaxSpeedY = 6f;
         private float m_PlayerNormalSpeedY = 3f;
         private float m_PlayerHitGroundMinSpeedY = 1f;
         private float m_GravityDir = 1f;
+        private float m_EnergyValue = 0f;
+        private float m_EnergyInitValue = 10f;
+        private float m_EnergyDecreaseSpeed = 2f;
 
         private Vector3? m_MoveDir = null;
 
@@ -28,6 +32,12 @@ namespace GameWish.Game
         {
             set { m_PlayerSpeedX = value; }
             get { return m_PlayerSpeedX; }
+        }
+
+        public float PlayerDecreaseSpeedX
+        {
+            set { m_PlayerDecreaseSpeedX = value; }
+            get { return m_PlayerDecreaseSpeedX; }
         }
 
         public float PlayerSpeedY
@@ -84,6 +94,22 @@ namespace GameWish.Game
             get { return m_GravityDir; }
         }
 
+        public float Energy
+        {
+            set
+            {
+                m_EnergyValue = Mathf.Clamp(value, 0, m_EnergyInitValue);
+                EventSystem.S.Send(EventID.OnPlayerEnergyChanged, m_EnergyValue/m_EnergyInitValue);
+            }
+            get { return m_EnergyValue; }
+        }
+
+        public float EnergyDecreaseSpeed
+        {
+            set { m_EnergyDecreaseSpeed = value; }
+            get { return m_EnergyDecreaseSpeed; }
+        }
+
         public PlayerData(PlayerController controller) : base(controller)
         {
             m_PlayerController = controller;
@@ -91,6 +117,7 @@ namespace GameWish.Game
             m_PlayerSpeedYDecreaseSpeed = m_PlayerSpeedYDecreaseNormalSpeed;
             m_PlayerSpeedY = m_PlayerNormalSpeedY;
             m_PlayerSpeedX = m_PlayerNormalSpeedX;
+            m_EnergyValue = m_EnergyInitValue;
         }
     }
 }

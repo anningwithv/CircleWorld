@@ -1,9 +1,9 @@
 ManifestFileVersion: 0
-CRC: 1886789915
+CRC: 2081243998
 Hashes:
   AssetFileHash:
     serializedVersion: 2
-    Hash: fc089089cb08f410bbe9055e838dc85b
+    Hash: 11c6aa1a0cee1fb6e2da476b5f7fc45f
   TypeTreeHash:
     serializedVersion: 2
     Hash: 460b4f5d62b6facbccf7c01637df8f00
@@ -14,6 +14,8 @@ ClassTypes:
 - Class: 213
   Script: {instanceID: 0}
 Assets:
+- Assets/Res/FolderMode/Sprites/Diamond.png
 - Assets/Res/FolderMode/Sprites/Circle.png
 - Assets/Res/FolderMode/Sprites/Square.png
+- Assets/Res/FolderMode/Sprites/Hexagon.png
 Dependencies: []

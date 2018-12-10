@@ -1,12 +1,15 @@
 ManifestFileVersion: 0
-CRC: 498810171
+CRC: 2602459453
 AssetBundleManifest:
   AssetBundleInfos:
     Info_0:
       Name: res/filemode/scenes/game.bundle
       Dependencies:
-        Dependency_0: res/foldermode/prefabs/entity.bundle
+        Dependency_0: res/foldermode/sprites.bundle
         Dependency_1: res/foldermode/prefabs/entity/player.bundle
+        Dependency_2: res/foldermode/prefabs/entity/items.bundle
+        Dependency_3: res/foldermode/prefabs/entity/obstacles.bundle
+        Dependency_4: res/foldermode/prefabs/entity/world.bundle
     Info_1:
       Name: res/foldermode/material/default.bundle
       Dependencies:
@@ -43,14 +46,18 @@ AssetBundleManifest:
       Name: res/foldermode/sprites.bundle
       Dependencies: {}
     Info_12:
-      Name: res/foldermode/prefabs/entity.bundle
-      Dependencies:
-        Dependency_0: res/foldermode/sprites.bundle
-    Info_13:
       Name: res/foldermode/prefabs/entity/player.bundle
       Dependencies:
         Dependency_0: res/foldermode/sprites.bundle
-    Info_14:
+    Info_13:
       Name: res/foldermode/prefabs/entity/items.bundle
+      Dependencies:
+        Dependency_0: res/foldermode/sprites.bundle
+    Info_14:
+      Name: res/foldermode/prefabs/entity/obstacles.bundle
+      Dependencies:
+        Dependency_0: res/foldermode/sprites.bundle
+    Info_15:
+      Name: res/foldermode/prefabs/entity/world.bundle
       Dependencies:
         Dependency_0: res/foldermode/sprites.bundle

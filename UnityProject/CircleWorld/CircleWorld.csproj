@@ -854,6 +854,7 @@
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\MainCamera\MainCamera.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Obstacle\IObstacle.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Obstacle\ObstacleBase.cs" />
+    <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Obstacle\ObstacleMovingBoard.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Obstacle\ObstacleRotateAroundTarget.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Obstacle\ObstacleStab.cs" />
     <Compile Include="Assets\Scripts\Game\GamePlay\Entity\Pattern\AutoRecylePattern.cs" />

@@ -27,6 +27,11 @@ namespace GameWish.Game
             Vector3 speedYDir = mgr.PlayerData.GravityDir * (mgr.transform.position - WorldsMgr.S.CurWorld.transform.position).normalized;
             Vector3 speedXDir = Vector3.Cross(Vector3.forward, speedYDir).normalized;
 
+            if (mgr.PlayerData.PlayerSpeedX < mgr.PlayerData.PlayerNormalSpeedX)
+            {
+                mgr.PlayerData.PlayerSpeedX += mgr.PlayerData.PlayerDecreaseSpeedX * Time.deltaTime;
+            }
+
             mgr.PlayerData.PlayerSpeedY -= mgr.PlayerData.PlayerSpeedYDecreaseSpeed * dt;
 
             Vector3 moveSpeed = speedYDir * mgr.PlayerData.PlayerSpeedY + speedXDir * mgr.PlayerData.PlayerSpeedX;

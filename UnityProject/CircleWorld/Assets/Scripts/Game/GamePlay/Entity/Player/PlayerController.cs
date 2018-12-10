@@ -68,6 +68,9 @@ namespace GameWish.Game
 
         public void OnPressXDown()
         {
+            if (!HasEnergy())
+                return;
+
             m_PlayerData.PlayerSpeedX = m_PlayerData.PlayerMaxSpeedX;
 
             m_PlayerStateMachine.SetCurrentStateByID(PlayerStateID.Dash);
@@ -75,7 +78,7 @@ namespace GameWish.Game
 
         public void OnPressedXUp()
         {
-            m_PlayerData.PlayerSpeedX = m_PlayerData.PlayerNormalSpeedX;
+            //m_PlayerData.PlayerSpeedX = m_PlayerData.PlayerNormalSpeedX;
 
             m_PlayerStateMachine.SetCurrentStateByID(PlayerStateID.Jump);
         }
@@ -83,7 +86,7 @@ namespace GameWish.Game
         protected override void SetInterestEvent()
         {
             m_InteresetEvents = new int[] { (int)EventID.OnPlayerHurt,
-            (int)EventID.OnSetGravityInversed};
+            (int)EventID.OnSetGravityInversed, (int)EventID.OnPlayerGetEnergy};
         }
 
         private void Update()
@@ -95,6 +98,7 @@ namespace GameWish.Game
 
             UpdateState();
 
+            //Log.i("Current state id is: " + m_PlayerStateMachine.currentStateID.ToString());
         }
 
         private void UpdateState()
@@ -102,11 +106,39 @@ namespace GameWish.Game
             if (m_PlayerStateMachine.IsJumping())
             {
                 m_PlayerStateMachine.UpdateState(Time.deltaTime);
+            }
+            else if (m_PlayerStateMachine.IsDashing())
+            {
+                bool hasEnergy = UpdateEnergy();
+                if (!hasEnergy)
+                {
+                    m_PlayerStateMachine.SetCurrentStateByID(PlayerStateID.Jump);
+                }
+                else
+                {
+                    m_PlayerStateMachine.UpdateState(Time.deltaTime);
+                }
+            }
+        }
 
-                //if (m_PlayerRaycast.HasBoardDown)
-                //{
-                //    SetState(PlayerStateID.Idle);
-                //}
+        private bool HasEnergy()
+        {
+            bool hasEnergy = m_PlayerData.Energy > 0;
+            Log.i("Player has energy : " + hasEnergy);
+            return hasEnergy;
+        }
+
+        private bool UpdateEnergy()
+        {
+            m_PlayerData.Energy -= m_PlayerData.EnergyDecreaseSpeed * Time.deltaTime;
+            if (m_PlayerData.Energy > 0)
+            {
+                return true;
+            }
+            else
+            {
+                m_PlayerData.Energy = 0;
+                return false;
             }
         }
 
@@ -140,6 +172,11 @@ namespace GameWish.Game
             {
                 m_PlayerData.GravityDir *= -1;
             }
+            else if (eventId == (int)EventID.OnPlayerGetEnergy)
+            {
+                float value = (float)param[0];
+                m_PlayerData.Energy += value;
+            }
         }
 
         public void OnReset(Vector3 pos)
@@ -151,6 +188,10 @@ namespace GameWish.Game
         {
             if (collision.tag == Define.WORLD_TAG)
             {
+                // Calculate damage by speed
+                WorldsMgr.S.CurWorld.HitByPlayer(10);
+
+                // reset speed
                 float speedY = Mathf.Min(Mathf.Abs(m_PlayerData.PlayerSpeedY * 0.7f), m_PlayerData.PlayerMaxSpeedY);
                 speedY = Mathf.Max(m_PlayerData.PlayerHitGroundMinSpeedY, speedY);
                 //float speedY = Mathf.Abs(m_PlayerData.PlayerSpeedY);

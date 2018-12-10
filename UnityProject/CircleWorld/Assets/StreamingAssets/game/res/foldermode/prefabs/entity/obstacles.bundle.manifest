@@ -1,0 +1,42 @@
+ManifestFileVersion: 0
+CRC: 2957108219
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 95ed10158cb6d9060ae8785e91efa244
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: a18e60c3d8a3fdd116d31880f8df4b7a
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 58
+  Script: {instanceID: 0}
+- Class: 60
+  Script: {instanceID: 0}
+- Class: 114
+  Script: {fileID: 11500000, guid: 3b9a41da8db274741a6727cec84f3c3a, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: e81dcd2e605bdfa489b03fa73bf452c4, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 212
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+Assets:
+- Assets/Res/FolderMode/Prefabs/Entity/Obstacles/ObstacleStatic 1.prefab
+- Assets/Res/FolderMode/Prefabs/Entity/Obstacles/ObstacleStatic.prefab
+- Assets/Res/FolderMode/Prefabs/Entity/Obstacles/ObstacleStab.prefab
+- Assets/Res/FolderMode/Prefabs/Entity/Obstacles/ObstacleRotating.prefab
+Dependencies:
+- D:/UnityProjects/CircleWorld/UnityProject/CircleWorld/Assets/StreamingAssets/game/res/foldermode/sprites.bundle
